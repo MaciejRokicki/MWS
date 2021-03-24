@@ -26,7 +26,7 @@ namespace MWS.Startup.Controllers
 
             SectorViewModel sectorViewModel = mapper.Map<SectorViewModel>(sectorDbo);
 
-            return Ok(sectorDbo);
+            return Ok(sectorViewModel);
         }
 
         [HttpGet]
