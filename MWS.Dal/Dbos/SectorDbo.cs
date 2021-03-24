@@ -1,6 +1,6 @@
 ﻿namespace MWS.Startup.ViewModels
 {
-    public class SectorViewModel
+    public class SectorDbo
     {
         public int Id { get; set; }
         public int X { get; set; }
