@@ -26,8 +26,12 @@ namespace MWS.Startup
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen();
 
+            //sectors
             services.AddTransient<ISectorRepository, SectorRepository>();
             services.AddTransient<ISectorService, SectorService>();
+
+            //packages
+            services.AddTransient<IPackageRepository, PackageRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
