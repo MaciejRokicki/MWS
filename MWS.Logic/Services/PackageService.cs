@@ -17,7 +17,7 @@ namespace MWS.Logic.Services
 
         public PackageDbo GetPackage(int id)
         {
-            PackageDbo packageDbo = packageRepository.GetPackage(x => x.Id == id);
+            PackageDbo packageDbo = packageRepository.GetPackage(x => x.SystemNumber == id);
 
             return packageDbo;
         }
