@@ -14,7 +14,7 @@
       "id": 1
     }
   },
-  {    
+  {
     "systemNumber": 100,
     "specimen": 1,
     "package": 2,
@@ -42,6 +42,21 @@
     "location": {
       "arrangement": "001",
       "id": 1
+    }
+  },
+  {
+    "systemNumber": 100,
+    "specimen": 1,
+    "package": 4,
+    "articleCode": "Krzesło ORION, paczka 4",
+    "dimensions": {
+      "height": 0.234,
+      "width": 0.35,
+      "depth": 0.7
+    },
+    "location": {
+      "arrangement": "100",
+      "id": 2
     }
   }
 ]

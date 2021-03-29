@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MWS.Dal.Interfaces;
 using MWS.Logic.Interfaces;
 using MWS.Startup.ViewModels;
@@ -17,10 +16,11 @@ namespace MWS.Logic.Services
 
         public PackageDbo GetPackage(int id)
         {
-            PackageDbo packageDbo = packageRepository.GetPackage(x => x.SystemNumber == id);
+            PackageDbo package = packageRepository.GetPackage(x => x.Package == id);
 
-            return packageDbo;
+            return package;
         }
+
         public IEnumerable<PackageDbo> GetPackages()
         {
             IEnumerable<PackageDbo> packages = packageRepository.GetPackages();
@@ -28,6 +28,12 @@ namespace MWS.Logic.Services
             return packages;
         }
 
+        public IEnumerable<PackageDbo> GetPackages(int locationId)
+        {
+            IEnumerable<PackageDbo> packageDbo = packageRepository.GetPackages(x => x.Location.Id == locationId);
+
+            return packageDbo;
+        }
     }
 }
 

@@ -24,15 +24,25 @@ namespace MWS.Startup.Controllers
         {
             PackageDbo packageDbo = packageService.GetPackage(id);
 
-            PackageViewModel packageViewModel = mapper.Map<PackageViewModel>(packageDbo);
+            PackageViewModel result = mapper.Map<PackageViewModel>(packageDbo);
 
-            return Ok(packageViewModel);
+            return Ok(result);
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<PackageViewModel>> GetPackages()
         {
             IEnumerable<PackageDbo> resultDbo = packageService.GetPackages();
+
+            IEnumerable<PackageViewModel> result = mapper.Map<IEnumerable<PackageViewModel>>(resultDbo);
+
+            return Ok(result);
+        }
+
+        [HttpGet("{locationId}")]
+        public ActionResult<PackageViewModel> GetPackages(int locationId)
+        {
+            IEnumerable<PackageDbo> resultDbo = packageService.GetPackages(locationId);
 
             IEnumerable<PackageViewModel> result = mapper.Map<IEnumerable<PackageViewModel>>(resultDbo);
 

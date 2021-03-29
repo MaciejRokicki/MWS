@@ -9,6 +9,15 @@ namespace MWS.Startup.AutoMapper
         {
             CreateMap<SectorViewModel, SectorDbo>()
                 .ReverseMap();
+
+            CreateMap<DimensionViewModel, DimensionDbo>()
+                .ReverseMap();
+
+            CreateMap<LocationViewModel, LocationDbo>()
+                .ReverseMap();
+
+            CreateMap<PackageViewModel, PackageDbo>()
+                .ReverseMap();
         }
     }
 }
