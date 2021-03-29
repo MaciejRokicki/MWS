@@ -7,5 +7,6 @@ namespace MWS.Logic.Interfaces
 	public interface IPackageService
     {
 		PackageDbo GetPackage(int id);
+        IEnumerable<PackageDbo> GetPackages();
     }
 }
