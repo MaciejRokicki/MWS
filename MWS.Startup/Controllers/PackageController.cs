@@ -19,10 +19,10 @@ namespace MWS.Startup.Controllers
             this.mapper = mapper;
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<PackageViewModel> GetPackage(int id)
+        [HttpGet]
+        public ActionResult<PackageViewModel> GetPackage(int systemNumber, int specimen, int package)
         {
-            PackageDbo packageDbo = packageService.GetPackage(id);
+            PackageDbo packageDbo = packageService.GetPackage(systemNumber, specimen, package);
 
             PackageViewModel result = mapper.Map<PackageViewModel>(packageDbo);
 
@@ -40,9 +40,19 @@ namespace MWS.Startup.Controllers
         }
 
         [HttpGet("{locationId}")]
-        public ActionResult<PackageViewModel> GetPackages(int locationId)
+        public ActionResult<IEnumerable<PackageViewModel>> GetPackagesByLocationId(int locationId)
         {
-            IEnumerable<PackageDbo> resultDbo = packageService.GetPackages(locationId);
+            IEnumerable<PackageDbo> resultDbo = packageService.GetPackagesByLocationId(locationId);
+
+            IEnumerable<PackageViewModel> result = mapper.Map<IEnumerable<PackageViewModel>>(resultDbo);
+
+            return Ok(result);
+        }
+
+        [HttpGet("{systemNumber}")]
+        public ActionResult<IEnumerable<PackageViewModel>> GetPackagesBySystemNumber(int systemNumber)
+        {
+            IEnumerable<PackageDbo> resultDbo = packageService.GetPackagesBySystemNumber(systemNumber);
 
             IEnumerable<PackageViewModel> result = mapper.Map<IEnumerable<PackageViewModel>>(resultDbo);
 

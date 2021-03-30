@@ -14,11 +14,11 @@ namespace MWS.Logic.Services
             this.packageRepository = packageRepository;
         }
 
-        public PackageDbo GetPackage(int id)
+        public PackageDbo GetPackage(int systemNumber, int specimen, int package)
         {
-            PackageDbo package = packageRepository.GetPackage(x => x.Package == id);
+            PackageDbo result = packageRepository.GetPackage(x => x.SystemNumber == systemNumber && x.Specimen == specimen && x.Package == package);
 
-            return package;
+            return result;
         }
 
         public IEnumerable<PackageDbo> GetPackages()
@@ -28,11 +28,18 @@ namespace MWS.Logic.Services
             return packages;
         }
 
-        public IEnumerable<PackageDbo> GetPackages(int locationId)
+        public IEnumerable<PackageDbo> GetPackagesByLocationId(int locationId)
         {
-            IEnumerable<PackageDbo> packageDbo = packageRepository.GetPackages(x => x.Location.Id == locationId);
+            IEnumerable<PackageDbo> packages = packageRepository.GetPackages(x => x.Location.Id == locationId);
 
-            return packageDbo;
+            return packages;
+        }
+
+        public IEnumerable<PackageDbo> GetPackagesBySystemNumber(int systemNumber)
+        {
+            IEnumerable<PackageDbo> packages = packageRepository.GetPackages(x => x.SystemNumber == systemNumber);
+
+            return packages;
         }
     }
 }
