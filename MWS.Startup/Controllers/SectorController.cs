@@ -30,6 +30,16 @@ namespace MWS.Startup.Controllers
         }
 
         [HttpGet]
+        public ActionResult<SectorViewModel> GetSector(int x, int y, int z)
+        {
+            SectorDbo sectorDbo = sectorService.GetSector(x, y, z);
+
+            SectorViewModel sectorViewModel = mapper.Map<SectorViewModel>(sectorDbo);
+
+            return Ok(sectorViewModel);
+        }
+
+        [HttpGet]
         public ActionResult<IEnumerable<SectorViewModel>> GetSectors()
         {
             IEnumerable<SectorDbo> resultDbo = sectorService.GetSectors();

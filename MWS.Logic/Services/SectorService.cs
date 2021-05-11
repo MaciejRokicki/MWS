@@ -21,6 +21,13 @@ namespace MWS.Logic.Services
             return sectorDbo;
         }
 
+        public SectorDbo GetSector(int x, int y, int z)
+        {
+            SectorDbo sectorDbo = sectorRepository.GetSector(s => s.X == x && s.Y == y && s.Z == z);
+
+            return sectorDbo;
+        }
+
         public IEnumerable<SectorDbo> GetSectors()
         {
             IEnumerable<SectorDbo> sectors = sectorRepository.GetSectors();
